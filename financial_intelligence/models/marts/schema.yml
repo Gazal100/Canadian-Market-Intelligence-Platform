@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: fct_stock_metrics
+    description: Core analytics fact table with rolling stats and signals
+    columns:
+      - name: trade_date
+        tests: [not_null]
+      - name: ticker
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['RY.TO','TD.TO','BMO.TO','SU.TO','CNQ.TO',
+                       'ENB.TO','SHOP.TO','CP.TO','BCE.TO','ATD.TO']
+      - name: close_price
+        tests: [not_null]
